@@ -1,0 +1,3 @@
+# Parcial BigData
+* Karol Guerrero
+
