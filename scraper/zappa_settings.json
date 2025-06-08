@@ -1,0 +1,26 @@
+{
+    "dev": {
+        "app_function": "app.handler",
+        "aws_region": "us-east-1",
+        "exclude": [
+            "boto3",
+            "dateutil",
+            "botocore",
+            "s3transfer",
+            "concurrent"
+        ],
+        "profile_name": "default",
+        "project_name": "scraper",
+        "runtime": "python3.10",
+        "s3_bucket": "zappa-7f9wbhgde",
+        "manage_roles": false,
+        "role_name": "LabRole",
+        "role_arn": "arn:aws:iam::099627823429:role/LabRole"
+        "events": [{
+          "function": "app.handler",
+          "expression": "rate(1 day)"
+        }]
+        
+        
+    }
+}
