@@ -5,7 +5,9 @@ import boto3
 s3 = boto3.client('s3')
 BUCKET = 'parcial-save-html-scrapper'
 
+
 def download_and_upload(url, source_name):
+    """Descarga HTML desde una URL y lo guarda en S3."""
     response = requests.get(url, headers={"User-Agent": "Mozilla/5.0"})
     if response.status_code == 200:
         today = datetime.now().strftime("%Y-%m-%d")
@@ -17,11 +19,16 @@ def download_and_upload(url, source_name):
             ContentType='text/html'
         )
         return f"{source_name} saved to {filename}"
-    else:
-        return f"Failed to fetch {source_name}: {response.status_code}"
+    return f"Failed to fetch {source_name}: {response.status_code}"
+
 
 def handler(event=None, context=None):
+    """Handler principal que descarga HTML de varias fuentes."""
     logs = []
-    logs.append(download_and_upload("https://www.eltiempo.com/", "eltiempo"))
-    logs.append(download_and_upload("https://www.elespectador.com/", "elespectador"))
+    logs.append(
+        download_and_upload("https://www.eltiempo.com/", "eltiempo")
+    )
+    logs.append(
+        download_and_upload("https://www.elespectador.com/", "elespectador")
+    )
     return {"result": logs}
