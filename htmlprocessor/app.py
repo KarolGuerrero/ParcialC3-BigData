@@ -1,7 +1,6 @@
 import boto3
 import pandas as pd
 from bs4 import BeautifulSoup
-from datetime import datetime
 from urllib.parse import unquote_plus
 
 s3 = boto3.client('s3')
