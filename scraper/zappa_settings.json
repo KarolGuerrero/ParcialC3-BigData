@@ -20,4 +20,6 @@
           "function": "app.handler",
           "expression": "rate(1 day)"
         }]
+    }
+}
         
