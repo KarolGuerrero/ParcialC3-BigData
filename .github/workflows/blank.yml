@@ -77,3 +77,35 @@ jobs:
           pip install -r requirements.txt
           pip install zappa
 
+  glue_deploy:
+    name: Despliegue de scripts de Glue
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Clonar repositorio
+      uses: actions/checkout@v4
+
+      - name: Configurar credenciales AWS
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+  
+      - name: Subir script del Job 1 a S3
+        run: aws s3 cp glue_jobs/scraper/scraper_job.py s3://parcial-save-scrapper/scraper/scraper_job.py
+    
+      - name: Subir script del Job 2 a S3
+        run: aws s3 cp glue_jobs/htmlprocessor/htmlprocessor_job.py s3://parcial-save-scrapper/htmlprocessor/htmlprocessor_job.py
+    
+      - name: Subir script del Job 3 a S3
+        run: aws s3 cp glue_jobs/crawler/crawler_job.py s3://parcial-save-scrapper/crawler/crawler_job.py
+    
+      - name: Ejecutar Job 1 en Glue
+        run: aws glue start-job-run --job-name scraper
+    
+      - name: Ejecutar Job 2 en Glue
+        run: aws glue start-job-run --job-name htmlprocessor
+    
+      - name: Ejecutar Job 3 en Glue
+        run: aws glue start-job-run --job-name crawler
