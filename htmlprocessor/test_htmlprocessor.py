@@ -32,7 +32,6 @@ def test_handler_extraction_and_upload(mock_boto_client):
 
     result = handler(fake_event, None)
 
-
     assert isinstance(result, dict)
     assert "status" in result
     assert result["status"] == "ok"
