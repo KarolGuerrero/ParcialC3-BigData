@@ -6,9 +6,7 @@ from urllib.parse import unquote_plus
 
 def handler(event, context):
     """Procesa archivos HTML desde S3, extrae titulares y guarda como CSV."""
-    s3 = boto3.client('s3')
-
-    resultados = []
+    s3 = boto3.client('s3')  # <-- Aquí dentro
 
     for record in event['Records']:
         bucket = record['s3']['bucket']['name']
@@ -36,14 +34,10 @@ def handler(event, context):
         for link in soup.find_all('a'):
             href = link.get('href')
             title = link.get_text(strip=True)
-
             if not href or not title or len(title) < 10:
                 continue
 
-            categoria = (
-                href.strip('/').split('/')[0]
-                if '/' in href else 'general'
-            )
+            categoria = href.strip('/').split('/')[0] if '/' in href else 'general'
 
             articles.append({
                 'categoria': categoria,
@@ -61,12 +55,13 @@ def handler(event, context):
 
         s3.put_object(Bucket=bucket, Key=output_key, Body=csv_buffer)
 
-        resultados.append({
-            "archivo_procesado": key,
-            "salida": output_key
-        })
+        return {
+            "status": "ok",
+            "resultados": [
+                {
+                    "archivo_procesado": key,
+                    "salida": output_key
+        }
+    ]
+}
 
-    return {
-        "status": "ok",
-        "resultados": resultados
-    }
