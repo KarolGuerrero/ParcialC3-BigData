@@ -71,5 +71,14 @@ jobs:
       - name: Instalar Zappa
         run: pip install zappa
 
-      - name: Desplegar con Zappa
+      - name: Desplegar scraper
+        working-directory: scraper
+        run: zappa update dev
+  
+      - name: Desplegar crawler
+        working-directory: crawler
+        run: zappa update dev
+  
+      - name: Desplegar htmlprocessor
+        working-directory: htmlprocessor
         run: zappa update dev
