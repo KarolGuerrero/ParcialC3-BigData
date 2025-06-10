@@ -11,14 +11,14 @@
         ],
         "profile_name": "default",
         "project_name": "htmlprocessor",
-        "runtime": "python3.10",
+        "runtime": "python3.9",
         "s3_bucket": "zappa-ovhqjduti",
         "manage_roles": false,
         "role_name": "LabRole",
-        "role_arn": "arn:aws:iam::099627823429:role/LabRole"
+        "role_arn": "arn:aws:iam::386117419953:role/LabRole"
         "events": [{
           "event_source": {
-            "arn":  "arn:aws:s3:::parcial-save-html-scrapper",
+            "arn":  "arn:aws:s3:::parcial-save-scrapper",
             "events": [
               "s3:ObjectCreated:*"
             ],

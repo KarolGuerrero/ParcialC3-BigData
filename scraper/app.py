@@ -3,7 +3,7 @@ from datetime import datetime
 import boto3
 
 s3 = boto3.client('s3')
-BUCKET = 'parcial-save-html-scrapper'
+BUCKET = 'parcial-save-scrapper'
 
 
 def download_and_upload(url, source_name):

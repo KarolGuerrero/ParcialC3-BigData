@@ -3,7 +3,7 @@ import boto3
 glue = boto3.client("glue")
 
 # Nombre del crawler que ya existe en Glue
-CRAWLER_NAME = "crawler-noticias-final"
+CRAWLER_NAME = "noticias_crawler"
 
 
 def handler(event=None, context=None):

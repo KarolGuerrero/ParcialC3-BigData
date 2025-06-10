@@ -1,4 +1,4 @@
-#!/home/ubuntu/environment/crawler/venv/bin/python
+#!/home/ec2-user/environment/ParcialC3-BigData/crawler/venv/bin/python3
 
 import argparse
 import sys

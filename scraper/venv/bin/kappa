@@ -1,4 +1,4 @@
-#!/home/ubuntu/environment/scraper/venv/bin/python
+#!/home/ec2-user/environment/ParcialC3-BigData/scraper/venv/bin/python3
 # EASY-INSTALL-ENTRY-SCRIPT: 'kappa==0.6.0','console_scripts','kappa'
 import re
 import sys

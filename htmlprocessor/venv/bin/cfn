@@ -1,4 +1,4 @@
-#!/home/ubuntu/environment/htmlprocessor/venv/bin/python3.10
+#!/home/ec2-user/environment/ParcialC3-BigData/htmlprocessor/venv/bin/python3
 
 import argparse
 import sys
