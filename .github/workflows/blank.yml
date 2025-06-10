@@ -51,12 +51,7 @@ jobs:
   
       - name: Ejecutar pruebas unitarias
         run: pytest --junitxml=report.xml
-  
-      - name: Publicar reporte de pruebas
-        uses: actions/upload-artifact@v4
-        with:
-          name: reporte-de-pruebas
-          path: report.xml
+
 
   deploy:
     name: Despliegue con Zappa
