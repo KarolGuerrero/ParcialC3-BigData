@@ -50,7 +50,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Ejecutar pruebas
-        run: pytest --junitxml=report.xml
+        run: pytest 
 
   deploy:
     name: Despliegue con Zappa
