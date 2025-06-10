@@ -9,7 +9,6 @@
             "s3transfer",
             "concurrent"
         ],
-        "profile_name": "default",
         "project_name": "scraper",
         "runtime": "python3.9",
         "s3_bucket": "zappa-7f9wbhgde",
