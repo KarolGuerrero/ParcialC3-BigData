@@ -68,8 +68,14 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
 
-      - name: Instalar Zappa
-        run: pip install zappa
+      - name: Crear entorno virtual
+        run: python -m venv venv
+  
+      - name: Activar entorno, instalar Zappa y desplegar
+        run: |
+          source venv/bin/activate
+          pip install -r htmlprocessor/requirements.txt
+          pip install zappa
 
       - name: Desplegar scraper
         working-directory: scraper
