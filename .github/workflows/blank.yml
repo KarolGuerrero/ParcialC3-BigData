@@ -76,15 +76,6 @@ jobs:
           source venv/bin/activate
           pip install -r requirements.txt
           pip install zappa
-
-      - name: Desplegar scraper
-        working-directory: scraper
-        run: zappa update dev
-  
-      - name: Desplegar crawler
-        working-directory: crawler
-        run: zappa update dev
-  
-      - name: Desplegar htmlprocessor
-        working-directory: htmlprocessor
-        run: zappa update dev
+          zappa update dev --settings_file scraper/zappa_settings.json
+          zappa update dev --settings_file htmlprocessor/zappa_settings.json
+          zappa update dev --settings_file crawler/zappa_settings.json
