@@ -9,7 +9,7 @@ BUCKET = 'parcial-save-scrapper'
 def download_and_upload(url, source_name):
     response = requests.get(url, headers={"User-Agent": "Mozilla/5.0"})
     if response.status_code == 200:
-        s3 = boto3.client('s3') 
+        s3 = boto3.client('s3')
         today = datetime.now().strftime("%Y-%m-%d")
         filename = f"headlines/raw/{source_name}-{today}.html"
         s3.put_object(
