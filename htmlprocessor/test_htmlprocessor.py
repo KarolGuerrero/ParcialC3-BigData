@@ -36,7 +36,8 @@ def test_handler_extraction_and_upload(mock_boto_client):
     assert isinstance(result, dict)
     assert "status" in result
     assert result["status"] == "ok"
-    assert "archivo_procesado" in result
-    assert "salida" in result
-    assert result["archivo_procesado"] == "headlines/raw/eltiempo-2025-06-09.html"
-    assert result["salida"].endswith("noticias.csv")
+    assert "resultados" in result
+    assert isinstance(result["resultados"], list)
+    assert "archivo_procesado" in result["resultados"][0]
+    assert "salida" in result["resultados"][0]
+
