@@ -76,5 +76,4 @@ jobs:
           source venv/bin/activate
           pip install -r requirements.txt
           pip install zappa
-          zappa update dev --settings_file htmlprocessor/zappa_settings.json
-          zappa update dev --settings_file crawler/zappa_settings.json
+
