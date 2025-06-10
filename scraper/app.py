@@ -7,9 +7,9 @@ BUCKET = 'parcial-save-scrapper'
 
 
 def download_and_upload(url, source_name):
-    """Descarga HTML desde una URL y lo guarda en S3."""
     response = requests.get(url, headers={"User-Agent": "Mozilla/5.0"})
     if response.status_code == 200:
+        s3 = boto3.client('s3')  # 👈 mover aquí
         today = datetime.now().strftime("%Y-%m-%d")
         filename = f"headlines/raw/{source_name}-{today}.html"
         s3.put_object(
@@ -20,6 +20,7 @@ def download_and_upload(url, source_name):
         )
         return f"{source_name} saved to {filename}"
     return f"Failed to fetch {source_name}: {response.status_code}"
+
 
 
 def handler(event=None, context=None):
