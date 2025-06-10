@@ -61,7 +61,5 @@ def handler(event, context):
                 {
                     "archivo_procesado": key,
                     "salida": output_key
-        }
-    ]
+        }]
 }
-
