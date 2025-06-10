@@ -31,7 +31,7 @@ jobs:
         run: pip install flake8
 
       - name: Ejecutar Flake8
-        run: flake8 . --max-line-length=88 --exclude=./crawler/venv/,.c9/,./htmlprocessor/venv/,./scraper/venv/,./scraper/test_scraper.py,./htmlprocessor/test_htmlprocessor.py
+        run: flake8 . --max-line-length=88 --exclude=./crawler/venv/,.c9/,./htmlprocessor/venv/,./scraper/venv/,./scraper/test_scraper.py,./htmlprocessor/test_htmlprocessor.py,./crawler/test_crawler.py
 
   test:
     name: Pruebas Unitarias
