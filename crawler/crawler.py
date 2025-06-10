@@ -2,7 +2,6 @@ import boto3
 from botocore.exceptions import ClientError
 
 CRAWLER_NAME = "noticias_crawler"
-
 def handler(event=None, context=None):
     glue = boto3.client("glue")
     try:
