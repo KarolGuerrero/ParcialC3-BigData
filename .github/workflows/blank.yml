@@ -74,7 +74,7 @@ jobs:
       - name: Activar entorno, instalar Zappa y desplegar
         run: |
           source venv/bin/activate
-          pip install -r htmlprocessor/requirements.txt
+          pip install -r requirements.txt
           pip install zappa
 
       - name: Desplegar scraper
