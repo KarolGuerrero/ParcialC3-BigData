@@ -36,19 +36,40 @@ jobs:
   test:
     name: Pruebas Unitarias
     runs-on: ubuntu-latest
-    needs: lint
+    needs: lint  # Ejecutar después de la revisión de código
     steps:
       - name: Clonar repositorio
         uses: actions/checkout@v4
-  
+
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-  
+
       - name: Instalar dependencias
         run: pip install -r requirements.txt
-  
-      - name: Ejecutar pruebas unitarias
-        run: pytest 
 
+      - name: Ejecutar pruebas
+        run: pytest --junitxml=report.xml
+
+  deploy:
+    name: Despliegue con Zappa
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar credenciales AWS
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: us-east-1
+
+      - name: Instalar Zappa
+        run: pip install zappa
+
+      - name: Desplegar con Zappa
+        run: zappa update dev
