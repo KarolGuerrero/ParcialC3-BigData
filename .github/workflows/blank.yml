@@ -31,7 +31,7 @@ jobs:
         run: pip install flake8
 
       - name: Ejecutar Flake8
-        run: flake8 . --max-line-length=88 --exclude=./crawler/venv/,.c9/,./htmlprocessor/venv/,./scraper/venv/,./scraper/test_scraper.py,./htmlprocessor/test_htmlprocessor.py,./crawler/test_crawler.py
+        run: flake8 . --max-line-length=88 --exclude=./crawler/venv/,.c9/,./htmlprocessor/venv/,./scraper/venv/,./scraper/test_scraper.py,./htmlprocessor/test_htmlprocessor.py,./crawler/test_crawler.py,./glue_jobs/crawler/test_crawler_job.py,./glue_jobs/htmlprocessor/test_htmlprocessor_job.py,./glue_jobs/scraper/test_scraper_job.py
 
   test:
     name: Pruebas Unitarias
@@ -42,7 +42,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Configurar Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v5 
         with:
           python-version: '3.9'
 
