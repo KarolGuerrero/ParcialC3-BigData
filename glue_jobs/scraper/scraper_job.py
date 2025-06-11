@@ -1,5 +1,4 @@
 from datetime import datetime
-
 import boto3
 import requests
 
@@ -25,5 +24,6 @@ def fetch_and_store(url, source):
         print(f"Error descargando {source}: {response.status_code}")
 
 
-fetch_and_store("https://www.eltiempo.com/", "eltiempo")
-fetch_and_store("https://www.elespectador.com/", "elespectador")
+if __name__ == "__main__":
+    fetch_and_store("https://www.eltiempo.com/", "eltiempo")
+    fetch_and_store("https://www.elespectador.com/", "elespectador")
