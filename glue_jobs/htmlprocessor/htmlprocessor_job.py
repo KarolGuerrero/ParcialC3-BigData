@@ -1,5 +1,6 @@
 import io
 from datetime import datetime
+
 import boto3
 import pandas as pd
 from bs4 import BeautifulSoup
@@ -7,9 +8,11 @@ from bs4 import BeautifulSoup
 s3 = boto3.client('s3')
 bucket = 'parcial-save-scrapper'
 
+
 def parse_html_to_csv(today=None):
     if today is None:
         today = datetime.now()
+
     fuentes = ['eltiempo', 'elespectador']
 
     for fuente in fuentes:
